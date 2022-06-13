@@ -1,0 +1,54 @@
+{% extends 'schema/base.html' %}
+{% block content %}
+{% load static %}
+     <!-- Begin Page Content -->
+     <div class="container-fluid">
+        <h3 style="color:black;margin:30px 0px"> New Schema</h3>
+
+          <form method="post"  class="user">
+            {% csrf_token %}
+
+            <div>
+                <label>Name</label>
+                <input name="name" class="form-control form-control-md col-md-3" type="text">
+            </div>
+        
+        <h3 style="color:black;margin:30px 0px">  Schema columns <button class="btn btn-danger float-right ">Save</button> </h3>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Column Name</label>
+                  <input name="clm_name" type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputState">Type</label>
+                  <select name="field_type" id="inputState" class="form-control type">
+                    {% for val,text in form.fields.field_type.choices %}
+                    <option value='{{ val }}'>{{ val }}</option>
+                   {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group col-md-1">
+                  <label for="inputZip">From</label>
+                  <input name="range_from" type="number" class="form-control rangeFrom" id="inputZip" disabled>
+                </div>
+                <div class="form-group col-md-1" >
+                  <label for="inputZip">To</label>
+                  <input name="range_to" type="number" class="form-control rangeTo" id="inputZip" disabled>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputZip">Order</label>
+                  <input name="order" type="number" class="form-control order" id="order">
+                </div>
+                  <div class="col-auto">
+                    <input style="margin-top: 1.88rem" type="button"  class="btn btn-primary del" value="Delete">
+                  </div>
+              </div>
+            
+        </form>     
+        <button style="margin-top: 1.88rem"  id='addCol' class="btn btn-success float-left ">Add column</button>
+
+
+    </div>
+  <!-- /.container-fluid -->
+  {% endblock %}

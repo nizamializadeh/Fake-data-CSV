@@ -1,0 +1,58 @@
+{% extends 'schema/base.html' %}
+{% block content %}
+{% load static %}
+     <!-- Begin Page Content -->
+     <div class="container-fluid">
+      <!-- Page Heading -->
+      <h1 class="h3 mb-2 text-gray-800">Datasets</h1>
+      
+      
+
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                             <th>#</th>
+                              <th>Status</th>
+                              <th>Created</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+               
+                      <tbody>
+                        {% for dataset in datasets %}
+                          <tr>
+                            <td>  {{ forloop.counter }}</td>
+
+                              <td>
+                                <div class='progress-wrapper'>
+                                    <div id='progress-bar' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+                                  </div>
+                                  <div id="progress-bar-message">{% if dataset.status == 'Done' %}Ready {%endif%}</div>
+                                </div>
+                              </td>
+                              <td>{{dataset.created_at}}</td>
+                              <td>
+                                  
+                              <a  href="/media/{{dataset.file_name}}" download class="btn btn-primary" >Download</a>
+                              
+                              </td>
+                          </tr>
+                      
+                          {% endfor %}
+                
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+
+    </div>
+  <!-- /.container-fluid -->
+
+  
+
+  {% endblock %}

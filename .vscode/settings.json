@@ -1,0 +1,12 @@
+{
+    "django.snippets.exclude": [
+
+        "cms",
+        "wagtail"
+    ],
+    "python.autoComplete.extraPaths": [
+    
+    ],
+    "python.analysis.extraPaths": [],
+    "git.ignoreLimitWarning": true
+}
